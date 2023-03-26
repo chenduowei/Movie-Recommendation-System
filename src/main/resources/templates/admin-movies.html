@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>全部</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .description-text {
+            width: 100%;
+            resize: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: inherit;
+            font-size: inherit;
+            overflow: auto;
+        }
+
+        .movie-image {
+            max-width: 100px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        th, td {
+            vertical-align: middle;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4">全部</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>图片</th>
+            <th>描述</th>
+            <th>编辑</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="movie : ${movies}">
+            <td th:text="${movie.title}"></td>
+            <td><img th:src="${movie.imageUrl}" alt="电影图片" class="movie-image"></td>
+            <td><textarea class="description-text" th:text="${movie.description}" readonly></textarea></td>
+            <td>
+                <a th:href="@{/admin/movie/edit/{id}(id=${movie.id})}" class="btn btn-warning btn-sm">修改</a>
+                <a th:href="@{/admin/movie/delete/{id}(id=${movie.id})}"
+                   onclick="return confirm('您确定要删除这部影视作品吗？')" class="btn btn-danger btn-sm">删除</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
