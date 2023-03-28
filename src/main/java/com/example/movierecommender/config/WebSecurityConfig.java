@@ -2,6 +2,7 @@ package com.example.movierecommender.config;
 
 import com.example.movierecommender.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,13 +22,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @Bean
+    public AdminAuthenticationSuccessHandler adminAuthenticationSuccessHandler() {
+        return new AdminAuthenticationSuccessHandler();
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/admin/**").hasRole("ADMIN") // 限制只有管理员可以访问 /admin/** 路径
                 .antMatchers("/login", "/register", "/css/**", "/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
+                .formLogin().loginPage("/login")
+                .successHandler(adminAuthenticationSuccessHandler()) // 注册自定义成功处理器
+                .permitAll()
                 .and()
                 .logout().logoutUrl("/logout").permitAll();
     }

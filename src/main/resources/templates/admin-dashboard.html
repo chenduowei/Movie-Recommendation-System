@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员仪表盘</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4">管理员仪表盘</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">管理影视作品</h5>
+                    <p class="card-text">查看、编辑或删除现有的影视作品。</p>
+                    <a href="/admin/movies" class="btn btn-primary">进入</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">添加影视作品</h5>
+                    <p class="card-text">在系统中添加新的影视作品。</p>
+                    <a href="/admin/movie/add" class="btn btn-primary">进入</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-4">
+        <a href="/" class="btn btn-secondary">回到首页</a>
+    </div>
+</div>
+</body>
+</html>

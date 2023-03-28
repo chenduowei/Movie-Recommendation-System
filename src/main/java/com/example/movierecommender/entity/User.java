@@ -15,6 +15,17 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(name = "is_admin")
+    private boolean isAdmin;
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
     // getter and setter methods
 
     public Long getId() {
