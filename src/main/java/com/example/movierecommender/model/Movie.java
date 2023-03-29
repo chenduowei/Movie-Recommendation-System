@@ -68,8 +68,4 @@ public class Movie {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
 }

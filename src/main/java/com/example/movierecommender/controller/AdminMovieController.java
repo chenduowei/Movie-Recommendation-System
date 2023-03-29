@@ -2,7 +2,6 @@ package com.example.movierecommender.controller;
 
 import com.example.movierecommender.model.Movie;
 import com.example.movierecommender.service.MovieService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +13,14 @@ import java.util.List;
 
 @Controller
 public class AdminMovieController {
-    @Autowired
-    private MovieService movieService;
+    private final MovieService movieService;
+
+    public AdminMovieController(MovieService movieService) {
+        this.movieService = movieService;
+    }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @GetMapping("/admin/dashboard") // 更改为 /admin/dashboard
+    @GetMapping("/admin/dashboard")
     public String dashboard() {
         return "admin-dashboard";
     }

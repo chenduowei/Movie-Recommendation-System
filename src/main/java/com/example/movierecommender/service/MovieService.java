@@ -4,15 +4,18 @@ import com.example.movierecommender.entity.Comment;
 import com.example.movierecommender.model.Movie;
 import com.example.movierecommender.repository.CommentRepository;
 import com.example.movierecommender.repository.MovieRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class MovieService {
-    @Autowired
-    private MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
+
+    public MovieService(MovieRepository movieRepository, CommentRepository commentRepository) {
+        this.movieRepository = movieRepository;
+        this.commentRepository = commentRepository;
+    }
 
     public List<Movie> findAll() {
         return movieRepository.findAll();
@@ -38,12 +41,7 @@ public class MovieService {
         }
     }
 
-    @Autowired
-    private CommentRepository commentRepository;
-
-    public List<Comment> findCommentsByMovieId(Long movieId) {
-        return commentRepository.findByMovieId(movieId);
-    }
+    private final CommentRepository commentRepository;
 
     public void addCommentToMovie(Long movieId, Comment comment) {
         Movie movie = findById(movieId);

@@ -4,8 +4,6 @@ import com.example.movierecommender.entity.Comment;
 import com.example.movierecommender.model.Movie;
 import com.example.movierecommender.repository.MovieRepository;
 import com.example.movierecommender.service.MovieService;
-import com.example.movierecommender.service.CustomUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,15 +16,12 @@ import java.util.List;
 
 @Controller
 public class MovieController {
-    @Autowired
-    private MovieService movieService;
+    private final MovieService movieService;
     private final MovieRepository movieRepository;
 
-    @Autowired
-    private CustomUserDetailsService userDetailsService;
-
-    public MovieController(MovieRepository movieRepository) {
+    public MovieController(MovieRepository movieRepository, MovieService movieService) {
         this.movieRepository = movieRepository;
+        this.movieService = movieService;
     }
 
     public static String formatDescription(String description) {

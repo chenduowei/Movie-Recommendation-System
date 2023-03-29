@@ -12,6 +12,7 @@
             top: 0;
             padding: 15px;
         }
+
         /* 添加回到顶部按钮样式 */
         #back-to-top {
             display: none;
@@ -28,6 +29,7 @@
             border-radius: 4px;
             font-size: 18px;
         }
+
         #back-to-top:hover {
             background-color: #495057;
         }
@@ -52,9 +54,9 @@
     </div>
     <form action="#" th:action="@{/search}" method="get" class="mb-2 pb-2">
         <div class="input-group">
-            <input type="text" name="keyword" class="form-control" placeholder="搜索影视作品……">
+            <input type="text" name="keyword" class="form-control custom-input" placeholder="搜索影视作品……">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">搜索</button>
+                <button class="btn btn-outline-secondary custom-button" type="submit">搜索</button>
             </div>
         </div>
     </form>
@@ -63,7 +65,7 @@
             <div class="card mb-4">
                 <div class="card">
                     <a th:href="@{/movie/{id}(id=${movie.id})}">
-                        <img class="card-img-top" th:src="${movie.imageUrl}" alt="Movie Poster"/>
+                        <img class="card-img-top" th:src="${movie.imageUrl}" alt="Movie Poster" src="#"/>
                     </a>
                 </div>
                 <div class="card-body">

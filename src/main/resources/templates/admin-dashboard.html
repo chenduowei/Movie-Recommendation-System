@@ -6,6 +6,20 @@
     <!-- 引入 Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}">
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            background-color: #f8f9fa;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -26,6 +40,15 @@
                     <h5 class="card-title">添加影视作品</h5>
                     <p class="card-text">在系统中添加新的影视作品。</p>
                     <a href="/admin/movie/add" class="btn btn-primary">进入</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">更多功能，敬请期待！</h5>
+                    <p class="card-text">我们将会持续提供更多有趣的功能。</p>
+                    <button class="btn btn-primary" disabled>敬请期待</button>
                 </div>
             </div>
         </div>

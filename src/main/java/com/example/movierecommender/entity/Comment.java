@@ -19,16 +19,7 @@ public class Comment {
 
     // 构造方法、getter 和 setter 方法
 
-    public Comment(Long id, String author, String content, Double rating, Movie movie) {
-        this.id = id;
-        this.author = author;
-        this.content = content;
-        this.rating = rating;
-        this.movie = movie;
-    }
-
     public Comment() {
-
     }
 
     public Long getId() {
