@@ -2,7 +2,7 @@
 
 这是一个基于Spring Boot和Thymeleaf的简单影视作品推荐系统。它允许用户浏览影视作品列表、搜索影视作品、登录和注册以及评论影视作品。管理员可以对影视作品进行添加、编辑和删除操作。
 
-![Image text](https://i.328888.xyz/2023/04/01/i2MfNL.png)
+![Image text](https://i.328888.xyz/2023/04/01/i2am3Z.png)
 
 ## 功能
 
