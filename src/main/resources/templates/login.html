@@ -2,49 +2,68 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>登录</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.328888.xyz/2023/04/01/i27PAc.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100%;
         }
 
         .login-form {
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 350px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-block {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <form th:action="@{/login}" method="post" class="login-form">
-        <h2 class="text-center">登录</h2>
+    <form th:action="@{/login}" method="post" class="login-form animate__animated animate__zoomIn">
+        <h2 class="text-center animate__animated animate__fadeIn">登录</h2>
         <div class="form-group">
-            <label for="username">用户名：</label>
-            <input type="text" id="username" name="username" class="form-control" required="required"/>
+            <label for="username" class="animate__animated animate__fadeInLeft">用户名：</label>
+            <input type="text" id="username" name="username" class="form-control animate__animated animate__fadeInLeft" required="required"/>
         </div>
         <div class="form-group">
-            <label for="password">密码：</label>
-            <input type="password" id="password" name="password" class="form-control" required="required"/>
+            <label for="password" class="animate__animated animate__fadeInRight">密码：</label>
+            <input type="password" id="password" name="password" class="form-control animate__animated animate__fadeInRight" required="required"/>
         </div>
-        <a th:href="@{/register}" class="btn btn-secondary btn-block">注册</a>
-        <button type="submit" class="btn btn-primary btn-block">登录</button>
+        <a th:href="@{/register}" class="btn btn-secondary btn-block animate__animated animate__fadeInUp">注册</a>
+        <button type="submit" class="btn btn-primary btn-block animate__animated animate__fadeInUp">登录</button>
     </form>
 </div>
 </body>

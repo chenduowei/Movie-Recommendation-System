@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>影视作品推荐系统</title>
-    <!-- Add Bootstrap CSS for basic styling -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        body {
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
         .user-info {
             position: absolute;
             right: 0;
@@ -13,7 +21,15 @@
             padding: 15px;
         }
 
-        /* 添加回到顶部按钮样式 */
+        .card {
+            height: 100%;
+        }
+
+        .card-img-top {
+            object-fit: cover;
+            height: 250px;
+        }
+
         #back-to-top {
             display: none;
             position: fixed;
@@ -37,16 +53,11 @@
 </head>
 <body>
 <div class="container">
-    <!-- 添加回到顶部按钮 -->
     <button id="back-to-top" title="回到顶部">↑</button>
-    <!-- 其他代码... -->
     <div class="position-relative">
         <h1 class="text-center mt-5 mb-5">影视作品推荐系统</h1>
-        <!-- 用户信息区域 -->
         <div class="user-info d-flex align-items-center">
             <span class="mr-2">欢迎您，[[${#httpServletRequest.remoteUser}]]！</span>
-
-            <!-- 退出登录按钮 -->
             <form id="logout-form" th:action="@{/logout}" method="post">
                 <button type="submit" class="btn btn-outline-danger">登出</button>
             </form>
@@ -61,13 +72,11 @@
         </div>
     </form>
     <div class="row">
-        <div th:each="movie : ${movies}" class="col-md-4">
+        <div th:each="movie : ${movies}" class="col-md-4 d-flex align-items-stretch">
             <div class="card mb-4">
-                <div class="card">
-                    <a th:href="@{/movie/{id}(id=${movie.id})}">
-                        <img class="card-img-top" th:src="${movie.imageUrl}" alt="Movie Poster" src="#"/>
-                    </a>
-                </div>
+                <a th:href="@{/movie/{id}(id=${movie.id})}">
+                    <img class="card-img-top" th:src="${movie.imageUrl}" alt="Movie Poster" src="#"/>
+                </a>
                 <div class="card-body">
                     <h5 class="card-title" th:text="${movie.title}">标题</h5>
                 </div>
@@ -75,11 +84,9 @@
         </div>
     </div>
 </div>
-<!-- Replace jQuery Slim with the full version -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- 添加回到顶部按钮脚本 -->
 <script>
     $(document).ready(function () {
         $(window).scroll(function () {

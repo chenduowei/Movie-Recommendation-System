@@ -2,12 +2,14 @@
 
 这是一个基于Spring Boot和Thymeleaf的简单影视作品推荐系统。它允许用户浏览影视作品列表、搜索影视作品、登录和注册以及评论影视作品。管理员可以对影视作品进行添加、编辑和删除操作。
 
+![Image text](https://i.328888.xyz/2023/04/01/i2MfNL.png)
+
 ## 功能
 
 - 用户可以浏览影视作品列表
 - 用户可以搜索影视作品
 - 用户可以登录和注册
-- 用户可以评论影视作品
+- 用户可以对影视作品进行评分和评论
 - 管理员可以添加、编辑和删除影视作品
 
 ## 技术栈
@@ -48,7 +50,7 @@
    spring.datasource.username=root
    spring.datasource.password=
    spring.jpa.hibernate.ddl-auto=update
-    ```
+   ```
 
 5. 运行项目，访问`http://localhost:8080`，您将看到影视作品推荐系统的主页。
 
