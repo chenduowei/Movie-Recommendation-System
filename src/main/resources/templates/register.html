@@ -39,18 +39,52 @@
             width: 350px;
         }
     </style>
+    <script>
+        $(document).ready(function () {
+            $("form").on("submit", function (event) {
+                let isValid = true;
+                const username = $("#username");
+                const password = $("#password");
+
+                // 验证用户名
+                if (username.val().trim().length < 3) {
+                    username.addClass("is-invalid");
+                    isValid = false;
+                } else {
+                    username.removeClass("is-invalid");
+                }
+
+                // 验证密码
+                if (password.val().trim().length < 6) {
+                    password.addClass("is-invalid");
+                    isValid = false;
+                } else {
+                    password.removeClass("is-invalid");
+                }
+
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <div class="container">
-    <form th:action="@{/register}" th:object="${user}" method="post" class="register-form animate__animated animate__zoomIn">
+    <form th:action="@{/register}" th:object="${user}" method="post"
+          class="register-form animate__animated animate__zoomIn">
         <h2 class="text-center animate__animated animate__fadeIn">注册</h2>
         <div class="form-group">
             <label for="username" class="animate__animated animate__fadeInLeft">用户名：</label>
-            <input type="text" id="username" th:field="*{username}" class="form-control animate__animated animate__fadeInLeft" required="required"/>
+            <input type="text" id="username" th:field="*{username}"
+                   class="form-control animate__animated animate__fadeInLeft" minlength="3" required="required"/>
+            <div class="invalid-feedback">用户名至少需要3个字符。</div>
         </div>
         <div class="form-group">
             <label for="password" class="animate__animated animate__fadeInRight">密码：</label>
-            <input type="password" id="password" th:field="*{password}" class="form-control animate__animated animate__fadeInRight" required="required"/>
+            <input type="password" id="password" th:field="*{password}"
+                   class="form-control animate__animated animate__fadeInRight" minlength="6" required="required"/>
+            <div class="invalid-feedback">密码至少需要6个字符。</div>
         </div>
         <button type="submit" class="btn btn-primary btn-block animate__animated animate__fadeInUp">注册</button>
     </form>

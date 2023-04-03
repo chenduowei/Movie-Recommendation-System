@@ -52,19 +52,37 @@
 </head>
 <body>
 <div class="container">
-    <form th:action="@{/login}" method="post" class="login-form animate__animated animate__zoomIn">
+    <form id="loginForm" th:action="@{/login}" method="post" class="login-form animate__animated animate__zoomIn"
+          novalidate>
         <h2 class="text-center animate__animated animate__fadeIn">登录</h2>
         <div class="form-group">
             <label for="username" class="animate__animated animate__fadeInLeft">用户名：</label>
-            <input type="text" id="username" name="username" class="form-control animate__animated animate__fadeInLeft" required="required"/>
+            <input type="text" id="username" name="username" class="form-control animate__animated animate__fadeInLeft"
+                   placeholder="请输入用户名" required="required"/>
+            <div class="invalid-feedback">请输入用户名。</div>
         </div>
         <div class="form-group">
             <label for="password" class="animate__animated animate__fadeInRight">密码：</label>
-            <input type="password" id="password" name="password" class="form-control animate__animated animate__fadeInRight" required="required"/>
+            <input type="password" id="password" name="password"
+                   class="form-control animate__animated animate__fadeInRight" placeholder="请输入密码"
+                   required="required"/>
+            <div class="invalid-feedback">请输入密码。</div>
         </div>
         <a th:href="@{/register}" class="btn btn-secondary btn-block animate__animated animate__fadeInUp">注册</a>
         <button type="submit" class="btn btn-primary btn-block animate__animated animate__fadeInUp">登录</button>
     </form>
 </div>
+<script>
+    $(document).ready(function () {
+        // Add custom validation to the form
+        $("#loginForm").on("submit", function (event) {
+            if (!this.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            this.classList.add("was-validated");
+        });
+    });
+</script>
 </body>
 </html>
