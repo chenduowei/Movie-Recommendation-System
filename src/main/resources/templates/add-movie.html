@@ -7,25 +7,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .card {
+            margin-top: 20px;
+        }
+
+        #description {
+            height: 400px; /* 设置描述文本框高度为 400px */
+            resize: none; /* 禁止用户拖动调整文本框大小 */
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <h1 class="my-4">添加影视作品</h1>
-    <form action="#" th:action="@{/admin/movie/add}" th:object="${movie}" method="post">
-        <div class="form-group">
-            <label for="title">名称:</label>
-            <input type="text" id="title" th:field="*{title}" class="form-control" required>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="#" th:action="@{/admin/movie/add}" th:object="${movie}" method="post">
+                        <div class="form-group">
+                            <label for="title">名称:</label>
+                            <input type="text" id="title" th:field="*{title}" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageUrl">图片链接:</label>
+                            <input type="text" id="imageUrl" th:field="*{imageUrl}" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">描述:</label>
+                            <textarea id="description" th:field="*{description}" class="form-control"
+                                      required></textarea>
+                        </div>
+                        <input type="submit" value="提交" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="imageUrl">图片链接:</label>
-            <input type="text" id="imageUrl" th:field="*{imageUrl}" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="description">描述:</label>
-            <textarea id="description" th:field="*{description}" class="form-control" required></textarea>
-        </div>
-        <input type="submit" value="提交" class="btn btn-primary">
-    </form>
+    </div>
 </div>
 </body>
 </html>

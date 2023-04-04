@@ -2,12 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>注册</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/scripts-register.js"></script>
     <style>
         html, body {
             height: 100%;
@@ -36,43 +38,23 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 350px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-block {
+            margin-bottom: 10px;
         }
     </style>
-    <script>
-        $(document).ready(function () {
-            $("form").on("submit", function (event) {
-                let isValid = true;
-                const username = $("#username");
-                const password = $("#password");
-
-                // 验证用户名
-                if (username.val().trim().length < 3) {
-                    username.addClass("is-invalid");
-                    isValid = false;
-                } else {
-                    username.removeClass("is-invalid");
-                }
-
-                // 验证密码
-                if (password.val().trim().length < 6) {
-                    password.addClass("is-invalid");
-                    isValid = false;
-                } else {
-                    password.removeClass("is-invalid");
-                }
-
-                if (!isValid) {
-                    event.preventDefault();
-                }
-            });
-        });
-    </script>
 </head>
 <body>
 <div class="container">
     <form th:action="@{/register}" th:object="${user}" method="post"
-          class="register-form animate__animated animate__zoomIn">
+          class="register-form animate__animated animate__zoomIn" novalidate>
         <h2 class="text-center animate__animated animate__fadeIn">注册</h2>
         <div class="form-group">
             <label for="username" class="animate__animated animate__fadeInLeft">用户名：</label>
@@ -87,6 +69,7 @@
             <div class="invalid-feedback">密码至少需要6个字符。</div>
         </div>
         <button type="submit" class="btn btn-primary btn-block animate__animated animate__fadeInUp">注册</button>
+        <a th:href="@{/login}" class="btn btn-secondary btn-block animate__animated animate__fadeInUp">返回登录</a>
     </form>
 </div>
 </body>

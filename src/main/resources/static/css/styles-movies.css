@@ -1,0 +1,20 @@
+.description-text {
+    width: 100%;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: inherit;
+    overflow: auto;
+}
+
+.movie-image {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+th, td {
+    vertical-align: middle;
+}
